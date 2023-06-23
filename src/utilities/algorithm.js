@@ -24,17 +24,22 @@ const solver = (grid, maxRow, maxCol) => {
         console.log(`Found empty spot at ${i}, ${j}`);
         // const result = positionSolver(grid, i, j);
         for (let num = 1; num <= 9; num++) {
-          copyGrid[i][j] = num;
-          if (isSafe(copyGrid)) {
-            grid = copyGrid;
+
+          grid[i][j] = num;
+          if (isSafe(grid)) {
+            if (!solver(grid, i, j)) {
+              grid[i][j] = "-";
+              continue;
+            } else {
+              return true;
+            }
+          } else {
+            grid[i][j] = "-";
           }
         }
-        if (grid !== copyGrid) {
+        if (grid[i][j] === "-") {
           console.log("can't be solved");
           return false;
-        } else {
-          console.log("recursion");
-          solver(grid, i, j);
         }
       }
     }
@@ -158,6 +163,24 @@ const isSafe = (grid) => {
 //   0
 // );
 
+// console.log("********************************************");
+
+// solver(
+//   [
+//     ["-", "-", "-", "-", "-", "-", 6, 8, "-"],
+//     ["-", "-", "-", "-", 7, 3, "-", "-", 9],
+//     [3, "-", 9, "-", "-", "-", "-", 4, 5],
+//     [4, 9, "-", "-", "-", "-", "-", "-", "-"],
+//     ["-", 1, 3, 4, 5, 6, "-", 7, 2],
+//     [2, 5, "-", 1, 9, 8, 4, 3, 6],
+//     [9, 6, 4, 7, 1, "-", 3, 2, 8],
+//     [7, 3, "-", 6, 8, 2, 5, 9, 4],
+//     [5, "-", 8, 9, 3, "-", 1, 6, "-"],
+//   ],
+//   0,
+//   0
+// );
+
 console.log("********************************************");
 
 solver(
@@ -169,7 +192,7 @@ solver(
     ["-", 1, 3, 4, 5, 6, "-", 7, 2],
     [2, 5, "-", 1, 9, 8, 4, 3, 6],
     [9, 6, 4, 7, 1, "-", 3, 2, 8],
-    [7, 3, "-", 6, 8, 2, 5, 9, 4],
+    [7, 3, "-", 6, 8, 2, 5, "-", 4],
     [5, "-", 8, 9, 3, "-", 1, 6, "-"],
   ],
   0,
