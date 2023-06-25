@@ -4,16 +4,6 @@ import { deepCopy } from "../utilities/helper";
 import solver from "../utilities/algorithm";
 
 const SudokuContainer = ({ grid, setGrid }) => {
-  const verifyGrid = () => {
-    grid.forEach((row) => {
-      row.forEach((cell) => {
-        if (cell < 0 && cell > 9) {
-          // do something
-        }
-      });
-    });
-  };
-
   const solveSudoku = () => {
     const copyGrid = deepCopy(grid);
     solver(copyGrid, 0, 0);
@@ -21,22 +11,14 @@ const SudokuContainer = ({ grid, setGrid }) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col justify-center max-w-4xl m-auto content-center">
       <Sudoku grid={grid} setGrid={setGrid} />
-      <div className="inline-flex m-auto">
-        <button
-          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
-          onClick={verifyGrid}
-        >
-          Confirm
-        </button>
-        <button
-          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
-          onClick={solveSudoku}
-        >
-          Solve
-        </button>
-      </div>
+      <button
+        className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded w-min m-auto my-4"
+        onClick={solveSudoku}
+      >
+        Solve
+      </button>
     </div>
   );
 };
