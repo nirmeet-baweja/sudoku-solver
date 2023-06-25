@@ -13,6 +13,7 @@ const SudokuContainer = ({ grid, setGrid }) => {
       });
     });
   };
+
   const solveSudoku = () => {
     const copyGrid = deepCopy(grid);
     solver(copyGrid, 0, 0);

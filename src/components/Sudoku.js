@@ -8,9 +8,8 @@ const Sudoku = ({ grid, setGrid }) => {
         <tbody>
           {grid.map((gridRow, rowIndex) => (
             <tr key={`${rowIndex}`}>
-              {gridRow.map((gridCell, colIndex) => (
+              {gridRow.map((_, colIndex) => (
                 <SudokuCell
-                  num={gridCell}
                   grid={grid}
                   row={rowIndex}
                   col={colIndex}

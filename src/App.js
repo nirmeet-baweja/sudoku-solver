@@ -5,7 +5,7 @@ import SudokuContainer from "./components/SudokuContainer";
 function App() {
   const rows = 9;
   const columns = 9;
-  const rowTemplate = Array(columns).fill("-");
+  const rowTemplate = Array(columns).fill("");
   const initGrid = Array.from(Array(rows), () => [...rowTemplate]);
   const [grid, setGrid] = useState(initGrid);
 
