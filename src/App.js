@@ -10,8 +10,10 @@ function App() {
   const [grid, setGrid] = useState(initGrid);
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Sudoku Solver!</h1>
+    <div className="flex flex-col justify-center items-center">
+      <h1 className="text-3xl font-bold m-10 p-2 w-max m-w-full">
+        Sudoku Solver!
+      </h1>
       <SudokuContainer grid={grid} setGrid={setGrid} />
     </div>
   );

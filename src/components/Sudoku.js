@@ -3,8 +3,8 @@ import SudokuCell from "./SudokuCell";
 
 const Sudoku = ({ grid, setGrid }) => {
   return (
-    <div>
-      <table className="border-spacing-0 border-slate-400 border-2">
+    <div className="max-w-full">
+      <table className="border-spacing-0 border-slate-400 border-2 m-auto">
         <tbody>
           {grid.map((gridRow, rowIndex) => (
             <tr key={`${rowIndex}`}>

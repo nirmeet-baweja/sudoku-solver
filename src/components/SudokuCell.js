@@ -7,7 +7,7 @@ const SudokuCell = ({ grid, row, col, setGrid }) => {
     const newGrid = deepCopy(grid);
     if (inputNum > 0 && inputNum < 10) {
       newGrid[row][col] = inputNum;
-      event.target.classList.add("text-teal-400");
+      event.target.classList.add("text-pink-500","font-bold", "bg-slate-100");
     } else {
       newGrid[row][col] = "";
     }
@@ -23,7 +23,7 @@ const SudokuCell = ({ grid, row, col, setGrid }) => {
       <input
         value={grid[row][col]}
         onChange={handleChange}
-        className="w-full h-full text-center"
+        className="w-full h-full text-center text-slate-700 cursor-pointer focus:outline-pink-500"
       ></input>
     </td>
   );
