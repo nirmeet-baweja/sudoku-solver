@@ -13,8 +13,8 @@ const SudokuCell = ({ num, grid, row, col, setGrid }) => {
   };
 
   return (
-    <td className="border  border-slate-400">
-      <input value={grid[row][col]} onChange={handleChange}></input>
+    <td className="border  border-slate-400 w-12 h-12">
+      <input value={grid[row][col]} onChange={handleChange} className="w-full"></input>
     </td>
   );
 };

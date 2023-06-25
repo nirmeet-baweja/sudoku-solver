@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
-import Sudoku from "./components/Sudoku";
+import SudokuContainer from "./components/SudokuContainer";
 
 function App() {
   const rows = 9;
@@ -9,13 +9,10 @@ function App() {
   const initGrid = Array.from(Array(rows), () => [...rowTemplate]);
   const [grid, setGrid] = useState(initGrid);
 
-  const solveSudoku = () => true;
-
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <Sudoku grid={grid} setGrid={setGrid} />
-      <button onClick={solveSudoku} />
+      <h1 className="text-3xl font-bold underline">Sudoku Solver!</h1>
+      <SudokuContainer grid={grid} setGrid={setGrid} />
     </div>
   );
 }

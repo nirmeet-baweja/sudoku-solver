@@ -24,7 +24,6 @@ const solver = (grid, maxRow, maxCol) => {
         console.log(`Found empty spot at ${i}, ${j}`);
         // const result = positionSolver(grid, i, j);
         for (let num = 1; num <= 9; num++) {
-
           grid[i][j] = num;
           if (isSafe(grid)) {
             if (!solver(grid, i, j)) {
@@ -198,3 +197,5 @@ solver(
   0,
   0
 );
+
+export default solver;

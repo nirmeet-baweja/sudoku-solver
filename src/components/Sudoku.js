@@ -7,7 +7,7 @@ const Sudoku = ({ grid, setGrid }) => {
       <table className="border-spacing-0 border border-slate-400">
         <tbody>
           {grid.map((gridRow, rowIndex) => (
-            <tr>
+            <tr key={`${rowIndex}`}>
               {gridRow.map((gridCell, colIndex) => (
                 <SudokuCell
                   num={gridCell}
