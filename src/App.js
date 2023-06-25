@@ -10,7 +10,7 @@ function App() {
   const [grid, setGrid] = useState(initGrid);
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center m-4 p-4">
       <h1 className="text-3xl font-bold m-10 p-2 w-max m-w-full">
         Sudoku Solver!
       </h1>
