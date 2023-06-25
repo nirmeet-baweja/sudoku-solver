@@ -7,9 +7,12 @@ const SudokuCell = ({ grid, row, col, setGrid }) => {
     const newGrid = deepCopy(grid);
     if (inputNum > 0 && inputNum < 10) {
       newGrid[row][col] = inputNum;
-      event.target.classList.add("text-pink-500","font-bold", "bg-slate-100");
+      event.target.classList.add("font-bold", "bg-slate-100");
+      event.target.classList.replace("text-slate-700", "text-pink-500");
     } else {
       newGrid[row][col] = "";
+       event.target.classList.remove("font-bold", "bg-slate-100");
+       event.target.classList.replace("text-pink-500", "text-slate-700");
     }
     setGrid(newGrid);
   };
