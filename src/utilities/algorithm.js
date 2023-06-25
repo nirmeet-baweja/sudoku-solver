@@ -1,16 +1,10 @@
 const solver = (grid, maxRow, maxCol) => {
   if (maxRow === 8 && maxCol === 8) {
-    console.log("solved!");
-    console.log(grid);
     return true;
   }
-  console.log("starting the loop");
-  console.log("solving for grid:");
-  console.log(grid);
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
       if (grid[i][j] === "") {
-        console.log(`Found empty spot at ${i}, ${j}`);
         // const result = positionSolver(grid, i, j);
         for (let num = 1; num <= 9; num++) {
           grid[i][j] = num;
@@ -26,7 +20,6 @@ const solver = (grid, maxRow, maxCol) => {
           }
         }
         if (grid[i][j] === "") {
-          console.log("can't be solved");
           return false;
         }
       }
