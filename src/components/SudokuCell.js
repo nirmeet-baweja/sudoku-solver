@@ -7,6 +7,7 @@ const SudokuCell = ({ grid, row, col, setGrid }) => {
     const newGrid = deepCopy(grid);
     if (inputNum > 0 && inputNum < 10) {
       newGrid[row][col] = inputNum;
+      event.target.classList.add("text-teal-400");
     } else {
       newGrid[row][col] = "";
     }
@@ -14,7 +15,11 @@ const SudokuCell = ({ grid, row, col, setGrid }) => {
   };
 
   return (
-    <td className="border  border-slate-400 w-12 h-12">
+    <td
+      className={`border w-12 h-12 border-slate-400 ${
+        (row === 2 || row === 5) && "border-b-slate-400 border-b-2"
+      } ${(col === 2 || col === 5) && "border-r-slate-400 border-r-2"}`}
+    >
       <input
         value={grid[row][col]}
         onChange={handleChange}
