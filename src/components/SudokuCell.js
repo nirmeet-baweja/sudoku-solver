@@ -1,18 +1,52 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { deepCopy } from "../utilities/helper";
 
 const SudokuCell = ({ grid, row, col, setGrid }) => {
+  const [classList, setClassList] = useState([
+    "w-full",
+    "h-full",
+    "text-center",
+    "text-slate-700",
+    "cursor-pointer",
+    "focus:outline-pink-500",
+  ]);
+
+  useEffect(() => {
+    if (grid[row][col] === "") {
+      setClassList([
+        "w-full",
+        "h-full",
+        "text-center",
+        "text-slate-700",
+        "cursor-pointer",
+        "focus:outline-pink-500",
+      ]);
+    }
+  }, [grid, row, col]);
+
   const handleChange = (event) => {
     const inputNum = Number(event.target.value);
     const newGrid = deepCopy(grid);
     if (inputNum > 0 && inputNum < 10) {
       newGrid[row][col] = inputNum;
-      event.target.classList.add("font-bold", "bg-slate-100");
-      event.target.classList.replace("text-slate-700", "text-pink-500");
+      const newClassList = classList.map((classItem) =>
+        classItem === "text-slate-700" ? "text-pink-500" : classItem
+      );
+      !newClassList.includes("font-bold") && newClassList.push("font-bold");
+      !newClassList.includes("bg-slate-100") &&
+        newClassList.push("bg-slate-100");
+
+      setClassList(newClassList);
     } else {
       newGrid[row][col] = "";
-       event.target.classList.remove("font-bold", "bg-slate-100");
-       event.target.classList.replace("text-pink-500", "text-slate-700");
+      const newClassList = classList.filter(
+        (classItem) => classItem !== "font-bold" && classItem !== "bg-slate-100"
+      );
+      const index = newClassList.indexOf("text-pink-500");
+      if (index !== -1) {
+        newClassList[index] = "text-slate-700";
+      }
+      setClassList(newClassList);
     }
     setGrid(newGrid);
   };
@@ -26,7 +60,7 @@ const SudokuCell = ({ grid, row, col, setGrid }) => {
       <input
         value={grid[row][col]}
         onChange={handleChange}
-        className="w-full h-full text-center text-slate-700 cursor-pointer focus:outline-pink-500"
+        className={classList.join(" ")}
       ></input>
     </td>
   );
